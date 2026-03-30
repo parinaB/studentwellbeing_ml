@@ -47,10 +47,21 @@ This project utilizes **machine learning** to predict a student **mental health 
 1. **Clone the repository**  
    ```bash
    https://github.com/parinaB/studentwellbeing_ml.git
+   ```
 2. **Install Dependencies**
     ```bash
     pip install -r requirements.txt
+    ```
+    
 3.**Run the app**
    ```bash
      streamlit run app.py
+  ```
+
+
+**Conclusion**
+
+This project demonstrates a practical application of **machine learning** in assessing **student well-being** using non-clinical, lifestyle-based features. By intentionally avoiding data leakage from clinical symptoms, the model provides **actionable insights** for interventions focusing on **sleep, social support, and outdoor activities**.  
+
+While the R² score of **65%** indicates room for improvement, the approach emphasizes **model integrity** over inflated accuracy, making it a reliable foundation for future enhancements. This work highlights how **behavioral and lifestyle indicators** can meaningfully predict mental health, offering a stepping stone for more personalized and proactive student support systems.
 
