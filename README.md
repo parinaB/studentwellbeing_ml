@@ -1,49 +1,56 @@
-# studentwellbeing_ml
-Student Well-being Index Prediction
-Project Overview
-This repository contains a comprehensive machine learning analysis and deployment of a Student Well-being Index predictor. The objective is to utilize behavioral and lifestyle indicators—such as sleep patterns, physical activity, and social support—to estimate a quantitative mental health index.
+# **Student Well-being Index Prediction**
 
-This project represents a foundational entry into applied machine learning, moving beyond standard tutorials to address real-world data challenges such as data leakage, overfitting, and feature engineering.
+**Project Overview**  
+This project utilizes **machine learning** to predict a student **mental health index** based on behavioral and lifestyle indicators. It represents a foundational entry into applied ML, focusing on **model integrity** and **practical feature engineering**.
 
-Model Evolution: From "High-Accuracy Leak" to Behavioral Insight
-A critical component of this project was the intentional transition from a descriptive model to a predictive, actionable one.
+---
 
-1. Initial State: The 92% Accuracy Trap
-Initial model iterations achieved an accuracy of approximately 92%. However, exploratory data analysis revealed that the model was primarily utilizing clinical symptoms—stress_level and anxiety_score—as its strongest predictors.
+## **Model Evolution**
 
-The Problem: This represented significant Data Leakage. The model was essentially predicting a mental health index using mental health symptoms, leading to an overfitted state with no real-world utility.
+- **The 92% Accuracy Trap**  
+  Initial iterations achieved ~92% accuracy but relied on **clinical symptoms** (`stress_level`, `anxiety_score`), leading to significant **data leakage**.
 
-2. The Strategic Shift
-To create a robust model, stress_level and anxiety_score were intentionally removed from the feature set. This forced the model to rely on controllable lifestyle factors, making the output actionable for student well-being improvements.
+- **The Strategic Shift**  
+  Clinical scores were intentionally removed to force the model to rely on **controllable lifestyle factors**.
 
-3. Feature Engineering & Dimensionality Reduction
-To recapture predictive power lost by removing clinical scores, the following methodologies were applied:
+- **Feature Engineering**  
+  Custom metrics were developed, including:  
+  - `Outdoors` → Physical Activity + Social Support  
+  - `Social_Ratio` → Social Support vs. Depression Symptoms
 
-Dimensionality Reduction: Principal Component Analysis (PCA) condensed multiple variables (study_hours_per_day, exam_pressure, and academic_performance) into a single academic_factors component.
+- **Dimensionality Reduction**  
+  Applied **PCA** to condense academic variables into a single `academic_factors` component.
 
-Behavioral Engineering: Custom metrics were developed to capture holistic wellness, including an Outdoors feature (sum of Physical Activity and Social Support) and a Social_Ratio (Social Support relative to Depression symptoms).
+---
 
-Model Performance
-The final model utilizes a Random Forest Regressor with 50 estimators and a maximum depth of 10.
+## **Performance**
 
-R² Score: ~0.65 (65%).
+- **Model**: `Random Forest Regressor` (50 estimators, max depth 10)  
+- **Result**: Achieved a **scientifically honest R² score of 65%**  
+- **Key Findings**:  
+  - `Depression symptoms` remain the primary predictor (**84.29% importance**)  
+  - Followed by **social support** and **sleep patterns**
 
-Conclusion: While the numeric score is lower than the initial 92%, this 65% represents a scientifically honest and robust correlation between controllable lifestyle behaviors and mental health outcomes.
+---
 
-Repository Structure
-app.py: Streamlit-based web interface for real-time model inference using serialized data.
+## **Repository Structure**
 
-wellbeing_model.pkl: The serialized Random Forest model.
+- `app.py` → **Streamlit frontend** for real-time model inference  
+- `wellbeing_model.pkl` → **Serialized Random Forest model**  
+- `notebooks/` → Full **EDA** and **model training history**  
+- `requirements.txt` → **Environment dependencies**
 
-notebooks/: Full exploratory data analysis (EDA) and the journey from overfitted clinical modeling to behavioral prediction.
+---
 
-requirements.txt: Necessary Python dependencies for environment replication.
+## **Installation & Usage**
 
-Local Deployment
-To execute the prediction interface locally, install the dependencies and run the Streamlit application:
+1. **Clone the repository**  
+   ```bash
+   https://github.com/parinaB/studentwellbeing_ml.git
+2. **Install Dependencies**
+    ```bash
+    pip install -r requirements.txt
+3.**Run the app**
+   ```bash
+     streamlit run app.py
 
-Bash
-pip install -r requirements.txt
-streamlit run app.py
-Significance
-As one of the initial forays into professional machine learning, this project demonstrates the transition from chasing high accuracy to ensuring model integrity. It serves as a practical application of predictive modeling in the domain of student health and behavioral science.
